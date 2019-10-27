@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package geolocation;
+
+service LocationController {
+    rpc GetLocationByID (GetLocationByIDRequest) returns (GetLocationByIDResponse) {}
+}
+
+message Country {
+    uint32 id = 1;
+    string iso = 2;
+    string name = 3;
+}
+
+message Location {
+    uint32 id = 1;
+    string ipAddress = 2;
+    double latitude = 3;
+    double longitude = 4;
+    Country country = 5;
+    string city = 6;
+}
+
+message GetLocationByIDRequest {
+    string ipAddress = 1;
+}
+
+message GetLocationByIDResponse {
+    Location location = 1;
+    uint32 code = 2;
+    string message = 3;
+}
